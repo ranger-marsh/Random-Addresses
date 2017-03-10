@@ -1,0 +1,27 @@
+          
+1001 N Summer LN UNIT A          
+           1001 N Summer LN UNIT E             
+1001 N Summer LN UNIT H           
+
+1002 N Summer LN UNIT 1119
+1003 N Summer LN UNIT E
+1003 N Summer LN UNIT H
+1003 N Summer LN UNIT A
+2425 Blue LN
+2505 Blue LN
+2506 Blue LN
+2510 Blue LN
+2517 Blue LN
+2610 Silver GATE WAY
+2701 Silver GATE WAY
+2702 Silver GATE WAY
+2705 Silver GATE WAY
+2708 Silver GATE WAY
+415 Movie RD UNIT 104
+415 Movie RD UNIT 103
+415 Movie RD UNIT 201
+435 Movie RD UNIT 203
+505 Movie RD UNIT 101
+505 Movie RD UNIT 102
+515 Movie RD UNIT 204
+         
