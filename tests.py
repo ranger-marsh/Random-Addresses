@@ -13,7 +13,7 @@ def teardown_module(module):
 
 def test_file_open():
     # Open file read to list.
-    address_list = RA.open_file('test_data.txt')
+    address_list = RA.open_file('testing_data/test_data.txt')
     # Does the file open
     assert address_list is not None
     # Is the file a list
@@ -33,9 +33,9 @@ def test_write_file():
 
 def test_determine_sample_size():
     # Open file read to list.
-    address_list = RA.open_file('test_data.txt')
+    address_list = RA.open_file('testing_data/test_data.txt')
     # sample half the list test_data is length 24.
-    sample_rate = 0.5
+    sample_rate = '0.5'
     results = RA.determine_sample_size(address_list, sample_rate)
     # half the list is 12
     assert results == 12
@@ -51,7 +51,7 @@ def test_remove_used():
 
 def test_random_sample():
     # Open file read to list.
-    address_list = RA.open_file('test_data.txt')
+    address_list = RA.open_file('testing_data/test_data.txt')
     # create random list
     random_addresses = RA.random_sample(address_list, sample_size=12)
     # make sure list length is as expected.

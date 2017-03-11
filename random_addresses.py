@@ -2,12 +2,9 @@ import random
 import sys
 
 # Terminal text colors.
-HEADER = '\033[95m'
+
 OKBLUE = '\033[94m'
-OKGREEN = '\033[92m'
-WARNING = '\033[93m'
 FAIL = '\033[91m'
-ENDC = '\033[0m'
 
 
 def usage():
@@ -31,17 +28,17 @@ def usage():
 def validate_args():
     if len(sys.argv) != 4 and len(sys.argv) != 5:
         usage()
-        sys.exit(FAIL + 'Incorrect number of arguments passed.\n')
+        sys.exit('{}Incorrect number of arguments passed.\n'.format(FAIL))
 
     try:
         if not float(sys.argv[3]) < 1:
             usage()
             sys.exit(
-                FAIL + 'sample-rate should be a floating point number less than 1.0.\n')
+                '{}sample-rate should be a floating point number less than 1.0.\n'.format(FAIL))
     except ValueError:
         usage()
         sys.exit(
-            FAIL + 'sample-rate should be a floating point number less than 1.0.\n')
+            '{}sample-rate should be a floating point number less than 1.0.\n'.format(FAIL))
 
 
 def open_file(path):
@@ -60,14 +57,14 @@ def write_file(random_list, path):
 
 def determine_sample_size(address_list, sample_rate):
     # Returns an int because a fraction of an address is not very useful.
-    sample_size = int(len(address_list) * sample_rate)
+    sample_size = int(len(address_list) * float(sample_rate))
     return sample_size
 
 
-def remove_used(orginal_list, used_list):
+def remove_used(address_list, used_list):
     # Remove used lines if a second sample is needed.
     used = set(used_list)  # set saves time  when checking membership
-    unused_list = [address for address in orginal_list if address not in used]
+    unused_list = [address for address in address_list if address not in used]
     return unused_list
 
 
@@ -92,7 +89,21 @@ def sort_addresses(random_list):
 
 
 def main():
-    pass
+    validate_args()
+
+    address_list = open_file(sys.argv[1])
+    out_path = sys.argv[2]
+    sample_size = determine_sample_size(address_list, sys.argv[3])
+
+    if len(sys.argv) == 5:
+        used_list = open_file(sys.argv[4])
+        address_list = remove_used(address_list, used_list)
+
+    random_list = random_sample(address_list, sample_size)
+    random_list = sort_addresses(random_list)
+
+    write_file(random_list, out_path)
+    sys.exit('{}Random address created at {}'.format(OKBLUE, out_path))
 
 if __name__ == '__main__':
     main()
