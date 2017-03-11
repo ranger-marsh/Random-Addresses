@@ -41,6 +41,14 @@ def test_determine_sample_size():
     assert results == 12
 
 
+def test_remove_used():
+    orginal_list = ['zero', 'one', 'two', 'three', 'four', 'five']
+    used_list = ['zero', 'two',  'five']
+    expected = ['one', 'three', 'four']
+    RA.remove_used(orginal_list, used_list)
+    assert RA.remove_used(orginal_list, used_list) == expected
+
+
 def test_random_sample():
     # Open file read to list.
     address_list = RA.open_file('test_data.txt')
