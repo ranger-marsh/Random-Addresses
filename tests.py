@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 """
+Test using pytest http://doc.pytest.org/en/latest/
 Tests for random_addresses.py
 """
 
