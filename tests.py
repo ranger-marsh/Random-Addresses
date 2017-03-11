@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+
+"""
+Tests for random_addresses.py
+"""
+
 from pathlib import Path
 import os
 import random_addresses as RA

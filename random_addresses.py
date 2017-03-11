@@ -1,8 +1,15 @@
+#!/usr/bin/env python3
+
+"""
+This script takes in a text file. The file has one address per line. The script
+returns a text file that contains a random sampling of the original file. This
+script is used to help administer surveys for a local police station. The
+surveys are administered in specific neighborhoods concerning police relations.
+"""
 import random
 import sys
 
 # Terminal text colors.
-
 OKBLUE = '\033[94m'
 FAIL = '\033[91m'
 
