@@ -18,13 +18,13 @@ def usage():
              should be less than 1.0.
 
              Basic usage:
-             script.py <in-file> <out-file> <sample-rate>
+             random_addresses.py <in-file> <out-file> <sample-rate>
 
              On a second or subsequent runs a text file containing used
-             addresses. These addresses will not be sampled.
+             addresses can be passed. These addresses will not be sampled.
 
              Subsequent usage:
-             script.py <in-file> <out-file> <sample-rate> <used-file>
+             random_addresses.py <in-file> <out-file> <sample-rate> <used-file>
              ''')
 
 
@@ -38,7 +38,6 @@ def validate_args():
             usage()
             sys.exit(
                 FAIL + 'sample-rate should be a floating point number less than 1.0.\n')
-
     except ValueError:
         usage()
         sys.exit(
@@ -49,29 +48,31 @@ def open_file(path):
     with open(path, 'r') as file:
         addresses = file.read().splitlines()
         addresses = [address.strip() for address in addresses]
-        addresses = list(filter(None, addresses))  # Remove empty lines
+        addresses = list(filter(None, addresses))  # removes empty lines
     return addresses
 
 
 def write_file(random_list, path):
     with open(path, 'w') as file:
-        for address in random_list:
-            file.write('{}\n'.format(address))  # write list line by line
+        for address in random_list:  # write out-file line by line from list
+            file.write('{}\n'.format(address))
 
 
 def determine_sample_size(address_list, sample_rate):
+    # Returns an int because a fraction of an address is not very useful.
     sample_size = int(len(address_list) * sample_rate)
     return sample_size
 
 
 def remove_used(orginal_list, used_list):
     # Remove used lines if a second sample is needed.
-    used = set(used_list)  # set saves time  when checking checking membership
+    used = set(used_list)  # set saves time  when checking membership
     unused_list = [address for address in orginal_list if address not in used]
     return unused_list
 
 
 def random_sample(address_list, sample_size):
+    # Return a list containing a random sample.
     random_list = random.sample(address_list, sample_size)
     return random_list
 
