@@ -1,6 +1,49 @@
 import random
 import sys
 
+# Terminal text colors.
+HEADER = '\033[95m'
+OKBLUE = '\033[94m'
+OKGREEN = '\033[92m'
+WARNING = '\033[93m'
+FAIL = '\033[91m'
+ENDC = '\033[0m'
+
+
+def usage():
+    print('''
+             This script takes in a text file of addresses and writes a text
+             file containing a random sample of the in-file. sample-rate is
+             inputed as a floating point number. (e.g. 0.5 == %50) The rate
+             should be less than 1.0.
+
+             Basic usage:
+             script.py <in-file> <out-file> <sample-rate>
+
+             On a second or subsequent runs a text file containing used
+             addresses. These addresses will not be sampled.
+
+             Subsequent usage:
+             script.py <in-file> <out-file> <sample-rate> <used-file>
+             ''')
+
+
+def validate_args():
+    if len(sys.argv) != 4 and len(sys.argv) != 5:
+        usage()
+        sys.exit(FAIL + 'Incorrect number of arguments passed.\n')
+
+    try:
+        if not float(sys.argv[3]) < 1:
+            usage()
+            sys.exit(
+                FAIL + 'sample-rate should be a floating point number less than 1.0.\n')
+
+    except ValueError:
+        usage()
+        sys.exit(
+            FAIL + 'sample-rate should be a floating point number less than 1.0.\n')
+
 
 def open_file(path):
     with open(path, 'r') as file:
