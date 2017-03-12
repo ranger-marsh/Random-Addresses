@@ -13,3 +13,5 @@ addresses can be passed. These addresses will not be sampled.
 
 Subsequent usage:
 random_addresses.py <in-file> <out-file> <sample-rate> <used-file>
+
+This script uses pytest for running test. http://doc.pytest.org/en/latest/
