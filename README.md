@@ -5,13 +5,15 @@ It can also accept a text file with used addresses. These addresses will not be 
 USAGE: 
 This script takes in a text file (in-file) of addresses and writes a text file (out-file) containing a random sample of the in-file. sample-rate is inputed as a floating point number (e.g. 0.5 == %50). The rate should be less than 1.0.
 
-Basic usage:
-<span style="color:blue">random_addresses.py in-file out-file sample-rate</span>
+**Basic usage:**
+
+random_addresses.py in-file out-file sample-rate
 
 On a second or subsequent runs a text file containing used
 addresses can be passed. These addresses will not be sampled.
 
-Subsequent usage:
-<span style="color:blue">random_addresses.py in-file out-file sample-rate used-file</span>
+**Subsequent usage:**
+
+random_addresses.py in-file out-file sample-rate used-file
 
 This script uses pytest for running test. http://doc.pytest.org/en/latest/
