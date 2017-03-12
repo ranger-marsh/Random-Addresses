@@ -7,13 +7,13 @@ This script takes in a text file (in-file) of addresses and writes a text file (
 
 **Basic usage:**
 
-random_addresses.py in-file out-file sample-rate
+$random_addresses.py [in-file] [out-file] [sample-rate]
 
 On a second or subsequent runs a text file containing used
 addresses can be passed. These addresses will not be sampled.
 
 **Subsequent usage:**
 
-random_addresses.py in-file out-file sample-rate used-file
+$random_addresses.py [in-file ] [out-file ] [sample-rate] [used-file]
 
 This script uses pytest for running test. http://doc.pytest.org/en/latest/
