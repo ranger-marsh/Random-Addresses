@@ -1,0 +1,5 @@
+Bad-data-to-explode-sort_key_function
+1001 N Summer LN UNIT A
+1002 N Summer LN UNIT 1119
+1003 N Summer LN UNIT A
+1003 N Summer LN UNIT H
