@@ -51,8 +51,9 @@ def validate_args():
 def open_file(path):
     with open(path, 'r') as file:
         addresses = file.read().splitlines()
-        addresses = [address.strip() for address in addresses]
-        addresses = list(filter(None, addresses))  # removes empty lines
+        # Remove leading/trailing white space and blank lines.
+        addresses = [address.strip()
+                     for address in addresses if address.strip() != '']
     return addresses
 
 
@@ -110,7 +111,7 @@ def main():
     random_list = sort_addresses(random_list)
 
     write_file(random_list, out_path)
-    sys.exit('{}Random address created at {}'.format(OKBLUE, out_path))
+    sys.exit('{}Random address file created at {}'.format(OKBLUE, out_path))
 
 if __name__ == '__main__':
     main()
