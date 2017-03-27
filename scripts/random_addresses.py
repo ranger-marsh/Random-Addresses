@@ -35,17 +35,17 @@ def usage():
 def validate_args():
     if len(sys.argv) != 4 and len(sys.argv) != 5:
         usage()
-        sys.exit('{}Incorrect number of arguments passed.\n'.format(FAIL))
+        sys.exit(f'{FAIL}Incorrect number of arguments passed.\n')
 
     try:
         if not float(sys.argv[3]) < 1:
             usage()
             sys.exit(
-                '{}sample-rate should be a floating point number less than 1.0.\n'.format(FAIL))
+                'f{FAIL}sample-rate should be a floating point number less than 1.0.\n')
     except ValueError:
         usage()
         sys.exit(
-            '{}sample-rate should be a floating point number less than 1.0.\n'.format(FAIL))
+            'f{FAIL}sample-rate should be a floating point number less than 1.0.\n')
 
 
 def open_text_file(path):
@@ -90,7 +90,7 @@ def sort_key(list_item):
             return parts[1], int(parts[0]), parts[-1]
         return parts[1], int(parts[0])
     except IndexError:
-        sys.exit('{} "{}" not sortable by sort_key() check format.\n'.format(FAIL, list_item))
+        sys.exit(f'{FAIL} "{list_item}" not sortable by sort_key() check format.\n')
 
 
 def sort_addresses(random_list):
@@ -114,7 +114,7 @@ def main():
     random_list = sort_addresses(random_list)
 
     write_text_file(random_list, out_path)
-    sys.exit('{}Random address file created at {}'.format(OKBLUE, out_path))
+    sys.exit(f'{OKBLUE}Random address file created at {out_path}')
 
 if __name__ == '__main__':
     main()
